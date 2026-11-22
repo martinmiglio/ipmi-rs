@@ -184,6 +184,15 @@ impl Rmcp {
     /// the `warn` level and does not stop activation. Because the close waits
     /// for the BMC's response, re-activation can take up to the connection's
     /// read timeout when the BMC does not answer.
+    ///
+    /// # Privilege level
+    /// Sessions start out at the `User` privilege level, and have a requested
+    /// maximum of `Administrator`, which the BMC then caps to the account's
+    /// privilege limit.
+    ///
+    /// To raise the session's privilege level, call [`SetSessionPrivilegeLevel`] after activation.
+    ///
+    /// [`SetSessionPrivilegeLevel`]: crate::app::auth::SetSessionPrivilegeLevel
     pub fn activate(
         &mut self,
         rmcp_plus: bool,
