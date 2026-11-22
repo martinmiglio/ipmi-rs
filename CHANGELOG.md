@@ -1,5 +1,12 @@
 # Unreleased
 
+## `ipmi-rs-core`
+* Add `SetSessionPrivilegeLevel` so callers can raise the session privilege after activation; Administrator-only commands otherwise fail with `insufficient privilege level`.
+
+## `ipmi-rs`
+* Add `Rmcp::deactivate` to close the active IPMI session, and close the previous session when re-activating.
+* Add the `RmcpIpmiError::CloseSessionRejected` and `RmcpIpmiError::UnexpectedResponse` variants. Adding variants to this enum is semver-breaking for code that matches it exhaustively.
+
 # [0.5.0](https://github.com/datdenkikniet/ipmi-rs/tree/v0.5.0)
 
 * BREAKING: Refactor `IpmiCommand` to reduce/remove completion-code validation for ipmlementors. ([#28])
