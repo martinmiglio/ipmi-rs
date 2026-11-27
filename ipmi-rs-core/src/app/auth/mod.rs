@@ -13,6 +13,12 @@ pub use get_session_challenge::{GetSessionChallenge, SessionChallenge};
 mod activate_session;
 pub use activate_session::{ActivateSession, BeginSessionInfo};
 
+mod close_session;
+pub use close_session::{CloseSession, CloseSessionError};
+
+mod set_session_privilege_level;
+pub use set_session_privilege_level::{SetSessionPrivilegeLevel, SetSessionPrivilegeLevelError};
+
 mod get_channel_cipher_suites;
 pub use get_channel_cipher_suites::{ChannelCipherSuites, CipherSuite, GetChannelCipherSuites};
 
