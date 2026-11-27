@@ -181,6 +181,11 @@ pub struct State {
 }
 
 impl State {
+    /// The session ID assigned by the BMC during activation.
+    pub(crate) fn session_id(&self) -> NonZeroU32 {
+        self.session_id
+    }
+
     fn validate_open_session(
         req: &OpenSessionRequest,
         resp: &OpenSessionResponse,

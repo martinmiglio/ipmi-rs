@@ -1,5 +1,12 @@
 # Unreleased
 
+## `ipmi-rs`
+* Add `Rmcp::deactivate` to close the active IPMI session, and close the previous session when re-activating. It reports failures as a dedicated `DeactivationError`; sessions are still not closed from `Drop`.
+
+## `ipmi-rs-core`
+* Add `CloseSession`, and report an invalid session ID (`0x87`) as a typed error.
+* Add `SetSessionPrivilegeLevel` so callers can raise the session privilege after activation; Administrator-only commands otherwise fail with `insufficient privilege level`. Its command-specific completion codes (`0x80`-`0x82`) are reported as typed errors.
+
 # [0.5.0](https://github.com/datdenkikniet/ipmi-rs/tree/v0.5.0)
 
 * BREAKING: Refactor `IpmiCommand` to reduce/remove completion-code validation for ipmlementors. ([#28])
